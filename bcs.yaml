@@ -9,7 +9,7 @@ info:
 
 # IMPORTANT: Use your full Web App URL that already ends with /exec
 servers:
-  - url: https://script.google.com/macros/s/AKfycbwkAc3CUrPfX6OdLrWQ8lFWV9QckACsipt51zO9nbiYb2PgRH-1d2NvS4NlOL13LYEB7Q
+  - url: https://script.google.com/macros/s/AKfycbwkAc3CUrPfX6OdLrWQ8lFWV9QckACsipt51zO9nbiYb2PgRH-1d2NvS4NlOL13LYEB7Q/exec
 paths:
   /:
     post:
