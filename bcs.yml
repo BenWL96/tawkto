@@ -60,10 +60,3 @@ paths:
                 example:
                   status: error
                   message: Missing parameters
-                properties:
-                  ok:
-                    type: boolean
-                    example: false
-                  error:
-                    type: string
-                    example: "Missing required parameter: order_id"
