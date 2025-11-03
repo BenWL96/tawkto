@@ -1,51 +1,62 @@
 openapi: "3.0.0"
 info:
   version: 1.0.0
-  title: Google Sheet SKU API
+  title: Google Sheet Query API
   description: >
-    Returns the SKU from row 2 (A2) of the bound Google Sheet.
+    This API retrieves product descriptions based on code
   license:
     name: MIT
-
-# Use the deployed Web App URL that ends with /exec
 servers:
-  - url: https://script.google.com/macros/s/AKfycby17EPB-TZghKISHlmOC8cfbghlQx3PkFuY6ZexkDYcjd06AS2WFsMUZYDeYVZbPWuLGA
-
+  - url: https://script.google.com/macros/s/AKfycbyxExgWaGoGmhz7SYDfMRXWdap6J8WPsr8ef881mTGQ052kTPOEfJZ5unD8Wu82rGcSSg
 paths:
-  /:
-    get:
-      summary: Get SKU from row 2 (A2)
-      operationId: getSkuFromA2
+  /exec:
+    post:
+      summary: Retrieve product details based on product code
+      operationId: findProductsByCode
+      parameters:
+      - in: query
+        name: query
+        schema:
+          type: string
+          minLength : 3
+        required: true
+        description: Code to look up products. Performs a partial match. Minimum of 3 characters
       responses:
         '200':
-          description: SKU returned successfully
+          description: Found products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties :
+                  total:
+                    type: number
+                    description : Total number of that match the provided code
+                  entries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          example: "A123"
+                        name:
+                          type: string
+                          example: "Example Name"
+                        description:
+                          type: string
+                          example : "Product A123 is very awesome"
+        '400':
+          description: Missing parameters
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  ok:
-                    type: boolean
-                    example: true
-                  sku:
+                  status:
                     type: string
-                    example: "123"
-              examples:
-                success:
-                  value:
-                    ok: true
-                    sku: "123"
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  ok:
-                    type: boolean
-                    example: false
-                  error:
+                  message:
                     type: string
-                    example: "Sheet not found"
-
+                example:
+                  status: error
+                  message: Missing parameters
