@@ -9,7 +9,7 @@ info:
 
 # Use the deployed Web App URL that ends with /exec
 servers:
-  - url: https://script.google.com/macros/s/AKfycby17EPB-TZghKISHlmOC8cfbghlQx3PkFuY6ZexkDYcjd06AS2WFsMUZYDeYVZbPWuLGA/exec
+  - url: https://script.google.com/macros/s/AKfycby17EPB-TZghKISHlmOC8cfbghlQx3PkFuY6ZexkDYcjd06AS2WFsMUZYDeYVZbPWuLGA
 
 paths:
   /:
