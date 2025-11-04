@@ -1,54 +1,53 @@
 openapi: "3.0.0"
 info:
-  version: 1.0.1
-  title: Google Sheet Query API
+  version: 1.0.0
+  title: Google Apps Script API
   description: >
-    This API retrieves product information from a Google Sheet based on SKU values.
+    This API retrieves product descriptions based on code
   license:
     name: MIT
 servers:
-  - url: https://script.google.com/macros/s/AKfycbwhb_t3eaMiNABOyec9v8P8lud6TdgTBwKtEgdgtJD_XUEuAM33n4ChzTpxPwFj8y_4Gg
+  - URL: https://script.google.com/macros/s/AKfycbygnRZpELEcL385HRv-VAHAO83ddsbyQPMKYDa9h2qsejpyB66sz-08IZN079ImNbPgxQ
 paths:
   /exec:
-    get:
-      summary: Retrieve product details by SKU
-      operationId: getProductsBySKU
+    post:
+      summary: Retrieve product details based on product code
+      operationId: findProductsByCode
       parameters:
-        - in: query
-          name: SKU
-          schema:
-            type: string
-            minLength: 1
-          required: true
-          description: SKU value to search for. Performs a partial match on the SKU column.
+      - in: query
+        name: query
+        schema:
+          type: string
+          minLength : 3
+        required: true
+        description: Code to look up products. Performs a partial match. Minimum of 3 characters
       responses:
         '200':
-          description: Products found matching the SKU
+          description: Found products
           content:
             application/json:
               schema:
                 type: object
-                properties:
+                properties :
                   total:
-                    type: integer
-                    description: Total number of rows matching the SKU
-                  entries:
+                    type: number
+                    description : Total number of that match the provided code
+                  entries: 
                     type: array
-                    description: List of matching products
                     items:
                       type: object
                       properties:
                         code:
                           type: string
-                          example: "1003"
+                          example: "A123"
                         name:
                           type: string
-                          example: "Product 3"
+                          example: "Example Name"
                         description:
                           type: string
-                          example: "A product"
+                          example : "Product A123 is very awesome"
         '400':
-          description: Missing or invalid SKU parameter
+          description: Missing parameters
           content:
             application/json:
               schema:
@@ -56,7 +55,8 @@ paths:
                 properties:
                   status:
                     type: string
-                    example: "error"
                   message:
                     type: string
-                    example: "Missing SKU parameter
+                example:
+                  status: error
+                  message: Missing parameters
