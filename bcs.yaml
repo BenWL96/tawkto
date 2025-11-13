@@ -7,7 +7,7 @@ info:
   license:
     name: MIT
 servers:
-  - URL: https://script.google.com/macros/s/AKfycby2Fqc1-XRy4hR90mbbwqL-rkkVQ3XxtOhjzqqF20GEgo_ic2Uhe1OziP6iLwLyCpb3RQ
+  - URL: https://script.google.com/macros/s/AKfycbwPUlj4Ha6LsLAPsPsG2QUhzpXjubaoCWUpYBc7-GBciG2MnVyMupgbkS9aYMs-GhLmsw
 paths:
   /exec:
     post:
