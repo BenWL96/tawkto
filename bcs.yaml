@@ -1,13 +1,13 @@
 openapi: "3.0.0"
 info:
   version: 1.0.0
-  title: Google Apps Script API
+  title: Google Sheet Query API
   description: >
     This API retrieves product descriptions based on code
   license:
     name: MIT
 servers:
-  - URL: https://script.google.com/macros/s/AKfycbwPUlj4Ha6LsLAPsPsG2QUhzpXjubaoCWUpYBc7-GBciG2MnVyMupgbkS9aYMs-GhLmsw
+  - url: https://script.google.com/macros/s/AKfycbwPUlj4Ha6LsLAPsPsG2QUhzpXjubaoCWUpYBc7-GBciG2MnVyMupgbkS9aYMs-GhLmsw
 paths:
   /exec:
     post:
@@ -32,7 +32,7 @@ paths:
                   total:
                     type: number
                     description : Total number of that match the provided code
-                  entries: 
+                  entries:
                     type: array
                     items:
                       type: object
